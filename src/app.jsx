@@ -2,7 +2,7 @@ var React = require('react');
 
 var TweetBox = React.createClass({
 
-	getInitialState: function () {
+	getInitialState: function () { // this "special" function sets up the initial state of a component and runs only once during the lifecycle of the component
 		return {
 			text: '',
 			photoAdded: false
@@ -29,9 +29,33 @@ var TweetBox = React.createClass({
 		}
 	},
 
+	overflowAlert: function () {
+		if (this.remainingChar() < 0) {
+			if (this.state.photoAdded) {
+				var beforeOverflowText = this.state.text.substring(140 - 23 - 10, 140 - 23);
+				var overflowText = this.state.text.substring(140 - 23);
+			} else {
+				var beforeOverflowText = this.state.text.substring(140 - 10, 140);
+				var overflowText = this.state.text.substring(140);
+			}
+
+			return (
+				<div className="alert alert-warning">
+					<strong>Oops! Too Long:</strong>
+					&nbsp;...{beforeOverflowText}
+					<strong className="bg-danger">{overflowText}</strong>
+				</div>
+			);
+
+		} else {
+			return '';
+		}
+	},
+
 	render: function () {
 		return (
 			<div className="well clearfix">
+				{this.overflowAlert()}
 				<textarea className="form-control" onChange={this.handleChange}></textarea>
 				<br/>
 				<button className="btn btn-default pull-left" onClick={this.togglePhoto}>
