@@ -1,9 +1,19 @@
 var React = require('react');
 
-var App = React.createClass({
-	render() {
-		return <h1>This is going to be a Twitter tweet box</h1>;
-	}
-})
+var TweetBox = React.createClass({
 
-React.render(<App/>, document.getElementById('example'));
+	render: function () {
+		return (
+			<div className="well clearfix">
+				<textarea className="form-control"></textarea>
+				<br/>
+				<button className="btn btn-default pull-left">Add Photo</button>
+				<button className="btn btn-primary  pull-right">Tweet</button>
+				<span className="char-count pull-right"></span>
+			</div>
+		);
+	}
+	
+});
+
+React.render(<TweetBox/>, document.getElementById('tweet-box'));

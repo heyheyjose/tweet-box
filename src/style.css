@@ -1,0 +1,22 @@
+#tweet-box {
+	width: 75%;
+	margin: 10% auto;
+}
+
+.well {
+	background-color: #E4F2F7;
+}
+
+.char-count {
+	margin: 7px 10px 0 0;
+	color: #8899a6;
+}
+
+button {
+	outline: 0 !important;
+}
+
+.btn-default {
+	color: #0084b4;
+	border: 1px solid #0084b4;
+}
